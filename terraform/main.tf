@@ -50,21 +50,21 @@ resource "azurerm_mssql_server" "sql_server" {
 
 # Création de la base de données SQL
 resource "azurerm_mssql_database" "sql_database" {
-  name                = var.sql_database_name
-  server_id           = azurerm_mssql_server.sql_server.id
-  collation           = "SQL_Latin1_General_CP1_CI_AS"
-  license_type        = "LicenseIncluded"
-  max_size_gb         = 32
-  read_scale          = false
-  zone_redundant      = false
+  name                        = var.sql_database_name
+  server_id                   = azurerm_mssql_server.sql_server.id
+  collation                   = "SQL_Latin1_General_CP1_CI_AS"
+  max_size_gb                 = 32
+  read_scale                  = false
+  zone_redundant              = false
 
   # Configuration pour Serverless
-  sku_name            = "GP_S_Gen5_1"
+  sku_name                    = "GP_S_Gen5_1"
   
   # Paramètres pour Serverless (auto-pause après 1 heure d'inactivité)
   auto_pause_delay_in_minutes = 60
   min_capacity                = 0.5
 }
+
 
 # Règle de pare-feu pour permettre l'accès depuis Azure
 resource "azurerm_mssql_firewall_rule" "allow_azure_services" {
