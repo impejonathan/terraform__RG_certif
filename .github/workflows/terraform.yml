@@ -31,6 +31,9 @@ jobs:
         with:
           terraform_version: latest
         
+      - name: 🧹 Terraform Format
+        run: terraform fmt
+        
       - name: 🔍 Terraform Format Check
         run: terraform fmt -check
 
