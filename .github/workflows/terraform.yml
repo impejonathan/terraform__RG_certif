@@ -12,13 +12,12 @@ jobs:
   terraform:
     name: "Terraform Deployment"
     runs-on: ubuntu-latest
-
     env:
       ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-
+      TF_VAR_sql_admin_password: ${{ secrets.LOGIN_BDD_AZURE }}
     defaults:
       run:
         working-directory: ./terraform
@@ -31,8 +30,6 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: latest
-
-
         
       - name: 🔍 Terraform Format Check
         run: terraform fmt -check
