@@ -1,3 +1,10 @@
+terraform copy.tfvars
+terraform.tfvars
+setup-azure-sp.ps1
+*.png
+note.txt
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
