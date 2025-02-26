@@ -32,11 +32,6 @@ jobs:
         with:
           terraform_version: latest
 
-      - name: 🔓 Force Unlock Terraform State
-        run: |
-          terraform init
-          terraform force-unlock -force 2e71a826-486f-fb1d-0740-07075318cd1d
-        continue-on-error: true
 
         
       - name: 🔍 Terraform Format Check
