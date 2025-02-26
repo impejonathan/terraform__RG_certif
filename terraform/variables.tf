@@ -20,13 +20,13 @@ variable "storage_account_name" {
 variable "sql_server_name" {
   description = "Nom du serveur SQL"
   type        = string
-  default     = "BDD-impe-jonathan-serveur"
+  default     = "bdd-impe-jonathan-serveur"
 }
 
 variable "sql_admin_login" {
   description = "Nom d'utilisateur admin pour le serveur SQL"
   type        = string
-  default     = "BDD-impe-jonathan-serveur"
+  default     = "bdd-impe-jonathan-serveur"
 }
 
 variable "sql_admin_password" {
