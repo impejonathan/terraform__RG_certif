@@ -57,17 +57,12 @@ resource "azurerm_mssql_database" "sql_database" {
   read_scale                  = false
   zone_redundant              = false
 
-  # Configuration pour Serverless (environnement de développement)
+  # Configuration pour Serverless
   sku_name                    = "GP_S_Gen5_1"
   
-  # Auto-pause après 6 jours d'inactivité (8640 minutes)
+  # Paramètres pour Serverless (auto-pause après 1 heure d'inactivité)
   auto_pause_delay_in_minutes = 8640
   min_capacity                = 0.5
-  
-  # Tags pour documenter l'environnement
-  tags = {
-    Environment = "Development"
-  }
 }
 
 

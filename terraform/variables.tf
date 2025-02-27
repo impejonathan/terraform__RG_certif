@@ -42,8 +42,3 @@ variable "sql_database_name" {
 }
 
 
-variable "environment" {
-  description = "Environnement de travail (development, production)"
-  type        = string
-  default     = "development"
-}
