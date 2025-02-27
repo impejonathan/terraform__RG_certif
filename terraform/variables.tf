@@ -40,3 +40,10 @@ variable "sql_database_name" {
   type        = string
   default     = "auto_certif"
 }
+
+
+variable "environment" {
+  description = "Environnement de travail (development, production)"
+  type        = string
+  default     = "development"
+}
