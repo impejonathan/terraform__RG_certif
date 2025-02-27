@@ -60,7 +60,7 @@ resource "azurerm_mssql_database" "sql_database" {
   # Configuration pour Serverless
   sku_name                    = "GP_S_Gen5_1"
   
-  # Paramètres pour Serverless (auto-pause après 1 heure d'inactivité)
+  # Paramètres pour Serverless (auto-pause après 6 jours d'inactivité)
   auto_pause_delay_in_minutes = 8640
   min_capacity                = 0.5
 }
@@ -72,4 +72,15 @@ resource "azurerm_mssql_firewall_rule" "allow_azure_services" {
   server_id           = azurerm_mssql_server.sql_server.id
   start_ip_address    = "0.0.0.0"
   end_ip_address      = "255.255.255.255"
+}
+
+
+
+# Exécution du script SQL pour créer les tables
+resource "null_resource" "sql_tables" {
+  depends_on = [azurerm_mssql_database.sql_database]
+
+  provisioner "local-exec" {
+    command = "sqlcmd -S ${azurerm_mssql_server.sql_server.fully_qualified_domain_name} -d ${azurerm_mssql_database.sql_database.name} -U ${var.sql_admin_login} -P ${var.sql_admin_password} -i ${path.module}/init-db.sql"
+  }
 }
