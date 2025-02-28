@@ -478,7 +478,7 @@ jobs:
 
       - name: ✅ Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve tfplan 
+        run: terraform apply -auto-approve tfplan
 ```
 
 **Objectif** : Ce fichier configure un workflow GitHub Actions qui s'exécute automatiquement lorsque du code est poussé vers la branche principale ou lorsqu'une pull request est créée. Le workflow :
